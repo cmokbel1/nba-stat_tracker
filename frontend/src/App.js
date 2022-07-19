@@ -1,4 +1,5 @@
 import './App.css';
+import { TeamRenderer } from './components/teamRenderer'
 
 function App() {
   return (
@@ -6,9 +7,8 @@ function App() {
       <header>
       <h1>Welcome to the NBA Stat Tracker</h1>
       </header>
-      <body>
         <h1>Website Under Construction</h1>
-      </body>
+        <TeamRenderer />
     </div>
   );
 }
