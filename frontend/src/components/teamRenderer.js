@@ -49,11 +49,9 @@ export const TeamRenderer = () => {
                                     <img src={team.logo} alt="logo" />
                                     {team.city}
                                 </li>
-
                             )
-                        } else {
-                            return null
                         }
+                        return null
                     })}
                 </ul>
         }
