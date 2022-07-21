@@ -47,6 +47,16 @@ app.get('/players/:id', async (req, res) => {
   }
 })
 
+app.get('players/:id/statistics', async (req,res) => {
+  const season = req.query.season || 2021;
+  const data = await rapidapi.players.getPlayerStatisticsById(req.params.id, season);
+  if (data.error) {
+    res.status(400);
+  } else {
+    res.json(data);
+  }
+})
+
 app.listen(port, () => {
   console.log(`backend listening on port ${port}`)
 });
