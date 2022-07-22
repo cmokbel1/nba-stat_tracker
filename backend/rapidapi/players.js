@@ -25,7 +25,7 @@ const getPlayerStatisticsById = async (id, season) => {
     }
 }
 
-const getPlayerBySearch = async (name) => {
+const getPlayerByName = async (name) => {
 try {
     console.log(`fetching player(s) with name: ${name}`);
     const player = await axios.get(`${cfg.baseUrl}/players?search=${name}`, cfg.requestConfig);
@@ -38,4 +38,4 @@ try {
 
 module.exports.getPlayerById = getPlayerById;
 module.exports.getPlayerStatisticsById = getPlayerStatisticsById;
-module.exports.getPlayerBySearch = getPlayerBySearch;
+module.exports.getPlayerByName = getPlayerByName;
