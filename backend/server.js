@@ -47,6 +47,16 @@ app.get('/teams/division/:division', async (req,res) => {
   }
 })
 
+app.get('teams/:id/statistics', async (req,res) => {
+  const season = req.query.season || 2021;
+  const data = await rapidapi.teams.getTeamStatisticsById(req.params.id, season);
+  if (data.error) {
+    res.status(400);
+  } else {
+    res.json(data);
+  }
+})
+
 app.get('/players/:id', async (req, res) => {
   const data = await rapidapi.players.getPlayerById(req.params.id);
   if (data.error) {

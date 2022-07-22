@@ -47,7 +47,19 @@ const getTeamsByDivision = async (division) => {
     }
 }
 
+const getTeamStatisticsById = async (id, season) => {
+    try {
+        console.log (`fetching stats for team: ${id}, season: ${season}`);
+        const stats = await axios.get(`${cfg.baseUrl}/teams/statistics?season=${season}&id=${id}`, cfg.requestConfig);
+        return stats.data.response;
+    } catch (err) {
+        console.log(err);
+        return { "error": err.message };
+    }
+}
+
 module.exports.getTeamsByConference = getTeamsByConference;
 module.exports.getTeamById = getTeamById;
 module.exports.getTeamPlayersBySeason = getTeamPlayersBySeason;
 module.exports.getTeamsByDivision = getTeamsByDivision;
+module.exports.getTeamStatisticsById = getTeamStatisticsById;
