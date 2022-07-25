@@ -25,3 +25,4 @@ yarn-error.log*
 
 # backend api stuff
 /backend/.env
+/backend/test.js

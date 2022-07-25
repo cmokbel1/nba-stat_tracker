@@ -15,7 +15,7 @@ app.get('/teams/conference/:conference', async (req, res) => {
   if (data.error) {
     res.status(400);
   }
-    res.json(data);
+  res.json(data);
 });
 
 app.get('/teams/:id', async (req, res) => {
@@ -23,7 +23,7 @@ app.get('/teams/:id', async (req, res) => {
   if (data.error) {
     res.status(400);
   }
-    res.json(data);
+  res.json(data);
 })
 // get all players on a team for current season
 app.get('/teams/:id/players', async (req, res) => {
@@ -32,24 +32,24 @@ app.get('/teams/:id/players', async (req, res) => {
   if (data.error) {
     res.status(400);
   }
-    res.json(data);
+  res.json(data);
 })
 
-app.get('/teams/division/:division', async (req,res) => {
+app.get('/teams/division/:division', async (req, res) => {
   const data = await rapidapi.teams.getTeamsByDivision(req.params.division);
   if (data.error) {
     res.status(400);
   }
-    res.json(data);
+  res.json(data);
 })
 
-app.get('teams/:id/statistics', async (req,res) => {
+app.get('teams/:id/statistics', async (req, res) => {
   const season = req.query.season || 2021;
   const data = await rapidapi.teams.getTeamStatisticsById(req.params.id, season);
   if (data.error) {
     res.status(400);
   }
-    res.json(data);
+  res.json(data);
 })
 
 app.get('/players/:id', async (req, res) => {
@@ -57,7 +57,15 @@ app.get('/players/:id', async (req, res) => {
   if (data.error) {
     res.status(400);
   }
-    res.json(data);
+  res.json(data);
+})
+
+app.get('/players/:name', async (req,res) => {
+  const data = await rapidapi.players.getPlayerByName(req.params.name);
+  if (data.error) {
+    res.status(400);
+  }
+  res.json(data);
 })
 
 app.listen(port, () => {
