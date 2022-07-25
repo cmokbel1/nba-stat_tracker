@@ -4,7 +4,7 @@ const cfg = require('./config');
 const getTeamsByConference = async (conference) => {
     try {
         console.log(`fetching teams for conference: ${conference}`);
-        const teams = await axios.get(`${cfg.baseUrl}/teams?conference=${conference}`, cfg.requestConfig)
+        const teams = await axios.get(`${cfg.baseUrl}/teams?conference=${conference}`, cfg.requestConfig);
         console.log(teams);
         return teams.data.response;
     } catch (err) {
@@ -16,7 +16,7 @@ const getTeamsByConference = async (conference) => {
 const getTeamById = async (id) => {
     try {
         console.log(`fetching team with id: ${id}`);
-        const team = await axios.get(`${cfg.baseUrl}/teams?id=${id}`, cfg.requestConfig)
+        const team = await axios.get(`${cfg.baseUrl}/teams?id=${id}`, cfg.requestConfig);
         console.log(team);
         return team.data.response;
     } catch (err) {
@@ -28,8 +28,30 @@ const getTeamById = async (id) => {
 const getTeamPlayersBySeason = async (id, season) => {
     try {
         console.log(`fetching players from team: ${id} season: ${season}`);
-        const players = await axios.get(`${cfg.baseUrl}/players?team=${id}&season=${season}`, cfg.requestConfig)
+        const players = await axios.get(`${cfg.baseUrl}/players?team=${id}&season=${season}`, cfg.requestConfig);
         return players.data.response;
+    } catch (err) {
+        console.log(err);
+        return { "error": err.message };
+    }
+}
+
+const getTeamsByDivision = async (division) => {
+    try {
+        console.log(`fetching teams from division: ${division}`);
+        const teams = await axios.get(`${cfg.baseUrl}/teams?division=${division}`, cfg.requestConfig);
+        return teams.data.response;
+    } catch (err) {
+        console.log(err);
+        return { "error": err.message };
+    }
+}
+
+const getTeamStatisticsById = async (id, season) => {
+    try {
+        console.log(`fetching stats for team: ${id}, season: ${season}`);
+        const stats = await axios.get(`${cfg.baseUrl}/teams/statistics?season=${season}&id=${id}`, cfg.requestConfig);
+        return stats.data.response;
     } catch (err) {
         console.log(err);
         return { "error": err.message };
@@ -39,3 +61,5 @@ const getTeamPlayersBySeason = async (id, season) => {
 module.exports.getTeamsByConference = getTeamsByConference;
 module.exports.getTeamById = getTeamById;
 module.exports.getTeamPlayersBySeason = getTeamPlayersBySeason;
+module.exports.getTeamsByDivision = getTeamsByDivision;
+module.exports.getTeamStatisticsById = getTeamStatisticsById;
