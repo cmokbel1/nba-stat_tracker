@@ -49,7 +49,7 @@ const getTeamsByDivision = async (division) => {
 
 const getTeamStatisticsById = async (id, season) => {
     try {
-        console.log (`fetching stats for team: ${id}, season: ${season}`);
+        console.log(`fetching stats for team: ${id}, season: ${season}`);
         const stats = await axios.get(`${cfg.baseUrl}/teams/statistics?season=${season}&id=${id}`, cfg.requestConfig);
         return stats.data.response;
     } catch (err) {
