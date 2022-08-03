@@ -7,7 +7,10 @@ const getPlayerById = async (id) => {
     try {
         console.log(`fetching player: ${id}`);
         const player = await axios.get(`${cfg.baseUrl}/players?id=${id}`, cfg.requestConfig);
-        return player.data.response;
+        if (player.data.response.length > 0) {
+            return player.data.response[0];
+        }
+        return { "error": `Player: ${id} Not Found` };
     } catch (err) {
         console.log(err);
         return { "error": err.message };
@@ -17,7 +20,9 @@ const getPlayerById = async (id) => {
 const getPlayerStatisticsById = async (id, season) => {
     try {
         console.log(`fetching player: ${id} statistics, from season: ${season} `);
-        const player = await axios.get(`${cfg.baseUrl}/players/statistics?season=${season}&id=${id}`, cfg.requestConfig);
+        const opts = Object.assign({ params: { id, season }}, cfg.requestConfig);
+        console.log(opts);
+        const player = await axios.get(`${cfg.baseUrl}/players/statistics`, opts);
         return player.data.response;
     } catch (err) {
         console.log(err);
@@ -26,14 +31,14 @@ const getPlayerStatisticsById = async (id, season) => {
 }
 
 const getPlayerByName = async (name) => {
-try {
-    console.log(`fetching player(s) with name: ${name}`);
-    const player = await axios.get(`${cfg.baseUrl}/players?search=${name}`, cfg.requestConfig);
-    return player.data.response;
-} catch (err) {
-    console.log(err);
-    return { "error": err.message };
-}
+    try {
+        console.log(`fetching player(s) with name: ${name}`);
+        const player = await axios.get(`${cfg.baseUrl}/players?search=${name}`, cfg.requestConfig);
+        return player.data.response;
+    } catch (err) {
+        console.log(err);
+        return { "error": err.message };
+    }
 }
 
 module.exports.getPlayerById = getPlayerById;

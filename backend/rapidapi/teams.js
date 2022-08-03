@@ -28,7 +28,9 @@ const getTeamById = async (id) => {
 const getTeamPlayersBySeason = async (id, season) => {
     try {
         console.log(`fetching players from team: ${id} season: ${season}`);
-        const players = await axios.get(`${cfg.baseUrl}/players?team=${id}&season=${season}`, cfg.requestConfig);
+        const opts = Object.assign({ params: { team:id, season } }, cfg.requestConfig);
+        console.log(opts)
+        const players = await axios.get(`${cfg.baseUrl}/players`, opts);
         return players.data.response;
     } catch (err) {
         console.log(err);

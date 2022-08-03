@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 8081;
 const rapidapi = require('./rapidapi');
+import { RosterPlayer, Roster, ConferenceTeam } from './lib/models.js';
 
 app.use(cors());
 
@@ -57,17 +58,41 @@ app.get('/players/:id', async (req, res) => {
   if (data.error) {
     res.status(400);
   }
-  res.json(data);
-})
-
-app.get('/players/:name', async (req,res) => {
-  const data = await rapidapi.players.getPlayerByName(req.params.name);
-  if (data.error) {
-    res.status(400);
+  let jerseyNumber = "";
+  if (data.leagues.standard) {
+    jerseyNumber = data.leagues.standard.jersey;
   }
-  res.json(data);
+  const player = new RosterPlayer(req.params.id, data.firstname, data.lastname, jerseyNumber);
+  res.json(player);
 })
 
 app.listen(port, () => {
   console.log(`backend listening on port ${port}`)
 });
+
+/*
+Home Page - displays teams organized by conference
+  team: 
+    id - Number,
+    conference - string,
+    teamName - string
+
+Roster View - displays Players on team, [ team stats ]
+getTeamPlayersBySeason function
+
+  team:
+    id - Number,
+    teamName - string
+    players - []RosterPlayer
+  RosterPlayer:
+    id - Number,
+    fullName - string,
+    jerseyNumber - Number
+
+Player Detail View - displays detailed player stats
+  PlayerDetails:
+    id - Number,
+    fullName - string,
+    jerseyNumber - Number,
+
+*/
