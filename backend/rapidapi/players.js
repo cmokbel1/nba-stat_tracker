@@ -1,6 +1,4 @@
-const { pipelinePrimaryTopicReference } = require('@babel/types');
 const axios = require('axios');
-const { ModuleMocker } = require('jest-mock');
 const cfg = require('./config');
 
 const getPlayerById = async (id) => {
