@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 8081;
 const rapidapi = require('./rapidapi');
-import { RosterPlayer, Roster, ConferenceTeam } from './lib/models.js';
+import { RosterPlayer, Roster, ConferenceTeam, TeamStatistics } from './lib/models.js';
 
 app.use(cors());
 
@@ -33,7 +33,11 @@ app.get('/teams/:id/players', async (req, res) => {
   if (data.error) {
     res.status(400);
   }
-  res.json(data);
+  const roster = new Roster(req.params.id)
+  for (let i=0; i <= data.length; i++) {
+    Roster.addPlayer(data[i])
+  }
+  res.json(roster);
 })
 
 app.get('/teams/division/:division', async (req, res) => {
@@ -50,7 +54,8 @@ app.get('teams/:id/statistics', async (req, res) => {
   if (data.error) {
     res.status(400);
   }
-  res.json(data);
+  const teamStats = new TeamStatistics(req.params.id, data.games, data.points, data.fgm, data.fga, data.fgp, data.ftm, data.gta, data.ftp, data.totreb, data.assists, data.steals, data.turnovers, data.blocks)
+  res.json(teamStats);
 })
 
 app.get('/players/:id', async (req, res) => {

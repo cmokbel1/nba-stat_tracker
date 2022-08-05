@@ -14,9 +14,8 @@ export class RosterPlayer {
   
 export class Roster {
   
-    constructor(id, teamName) {
+    constructor(id) {
       this.id = id;
-      this.teamName = teamName;
       this.players = [];
     }
   
@@ -26,6 +25,7 @@ export class Roster {
   }
   
 export class ConferenceTeam {
+
     constructor(id, conference, teamName) {
       this.id = id;
       this.conference = conference;
@@ -34,7 +34,7 @@ export class ConferenceTeam {
   }
 
 export class TeamStatistics {
-  //fieldGoalPercentage(m,a) = field goal percentage(made, attempts) // freeThrowPerecentage(m,a) = free throw percentage(made, attempts)
+  
   constructor(id, games, points, fieldGoalsMade, fieldGoalsAttempted, fieldGoalPercentage, freeThrowsMade, freeThrowsAttempted, freeThrowPerecentage, rebounds, assists, steals, turnovers, blocks) {
     this.id = id;
     this.games = games;
@@ -51,4 +51,4 @@ export class TeamStatistics {
     this.turnovers = turnovers;
     this.blocks = blocks;
   }
-}
+  }
