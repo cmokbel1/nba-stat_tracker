@@ -16,7 +16,13 @@ app.get('/teams/conference/:conference', async (req, res) => {
   if (data.error) {
     res.status(400);
   }
-  res.json(data);
+  const conferenceTeams = [];
+  for (let i=0; i < data.length; i++) {
+    if (data[i].nbaFranchise === true) {
+      conferenceTeams.push(new ConferenceTeam(data[i]));
+    }
+  }
+  res.json(conferenceTeams);
 });
 
 app.get('/teams/:id', async (req, res) => {
