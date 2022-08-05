@@ -32,3 +32,23 @@ export class ConferenceTeam {
       this.teamName = teamName;
     }
   }
+
+export class TeamStatistics {
+  //fieldGoalPercentage(m,a) = field goal percentage(made, attempts) // freeThrowPerecentage(m,a) = free throw percentage(made, attempts)
+  constructor(id, games, points, fieldGoalsMade, fieldGoalsAttempted, fieldGoalPercentage, freeThrowsMade, freeThrowsAttempted, freeThrowPerecentage, rebounds, assists, steals, turnovers, blocks) {
+    this.id = id;
+    this.games = games;
+    this.points = points;
+    this.fieldGoalsMade = fieldGoalsMade;
+    this.fieldGoalsAttempted = fieldGoalsAttempted;
+    this.fieldGoalPercentage = fieldGoalPercentage;
+    this.freeThrowsMade = freeThrowsMade;
+    this.freeThrowsAttempted = freeThrowsAttempted;
+    this.freeThrowPerecentage = freeThrowPerecentage;
+    this.rebounds = rebounds;
+    this.assists = assists;
+    this.steals = steals;
+    this.turnovers = turnovers;
+    this.blocks = blocks;
+  }
+}
