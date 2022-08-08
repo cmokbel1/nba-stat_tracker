@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 8081;
 const rapidapi = require('./rapidapi');
-import { RosterPlayer, Roster, ConferenceTeam, TeamStatistics } from './lib/models.js';
+const { RosterPlayer, Roster, ConferenceTeam, TeamStatistics } = require('./lib/models.js');
 
 app.use(cors());
 
@@ -12,9 +12,15 @@ app.get('/', (req, res) => {
 })
 // get teams
 app.get('/teams/conference/:conference', async (req, res) => {
-  const data = await rapidapi.teams.getTeamsByConference(req.params.conference);
+  const conf = req.params.conference.toLowerCase();
+  if (conf != 'east' && conf != 'west') {
+    res.status(400).json({ "error" : "Conference must be either East or West" });
+    return;
+  }
+  const data = await rapidapi.teams.getTeamsByConference(req.params.conference);    
   if (data.error) {
-    res.status(400);
+    res.status(400).json(data.error);
+    return;
   }
   const conferenceTeams = [];
   for (let i=0; i < data.length; i++) {
@@ -26,22 +32,33 @@ app.get('/teams/conference/:conference', async (req, res) => {
 });
 
 app.get('/teams/:id', async (req, res) => {
+  if (isNaN(req.params.id)) {
+    res.status(400).json({"error": "Id must be a number"})
+    return;
+  }
   const data = await rapidapi.teams.getTeamById(req.params.id);
   if (data.error) {
-    res.status(400);
+    res.status(400).json(data.error);
+    return;
   }
   res.json(data);
 })
+
 // get all players on a team for current season
 app.get('/teams/:id/players', async (req, res) => {
+  if (isNaN(req.params.id)) {
+    res.status(400).json({"error": "Id must be a number"})
+    return;
+  }
   const season = req.query.season || 2021;
   const data = await rapidapi.teams.getTeamPlayersBySeason(req.params.id, season);
   if (data.error) {
-    res.status(400);
+    res.status(400).json(data.error);
+    return;
   }
   const roster = new Roster(req.params.id)
   for (let i=0; i <= data.length; i++) {
-    Roster.addPlayer(data[i])
+    roster.addPlayer(data[i])
   }
   res.json(roster);
 })
@@ -49,25 +66,41 @@ app.get('/teams/:id/players', async (req, res) => {
 app.get('/teams/division/:division', async (req, res) => {
   const data = await rapidapi.teams.getTeamsByDivision(req.params.division);
   if (data.error) {
-    res.status(400);
+    res.status(400).json(data.error);
+    return;
   }
   res.json(data);
 })
 
-app.get('teams/:id/statistics', async (req, res) => {
-  const season = req.query.season || 2021;
-  const data = await rapidapi.teams.getTeamStatisticsById(req.params.id, season);
-  if (data.error) {
-    res.status(400);
+app.get('/teams/:id/statistics', async (req, res) => {
+  if (isNaN(req.params.id)) {
+    res.status(400).json({"error": "Id must be a number"})
+    return;
   }
-  const teamStats = new TeamStatistics(req.params.id, data.games, data.points, data.fgm, data.fga, data.fgp, data.ftm, data.gta, data.ftp, data.totreb, data.assists, data.steals, data.turnovers, data.blocks)
+  const season = req.query.season || 2021;
+  const datas = await rapidapi.teams.getTeamStatisticsById(req.params.id, season);
+  if (datas.error) {
+    res.status(400).json(datas.error);
+    return;
+  }
+  const data = datas[0];
+  console.log(data);
+  const teamStats = new TeamStatistics(req.params.id,
+   data.games, data.points, data.fgm, data.fga, data.fgp,
+    data.ftm, data.gta, data.ftp, data.totreb, data.assists,
+     data.steals, data.turnovers, data.blocks)
   res.json(teamStats);
 })
 
 app.get('/players/:id', async (req, res) => {
+  if (isNaN(req.params.id)) {
+    res.status(400).json({"error": "Id must be a number"})
+    return;
+  }
   const data = await rapidapi.players.getPlayerById(req.params.id);
   if (data.error) {
-    res.status(400);
+    res.status(400).json(data.error);
+    return;
   }
   let jerseyNumber = "";
   if (data.leagues.standard) {

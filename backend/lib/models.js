@@ -1,40 +1,37 @@
-export class RosterPlayer {
+class RosterPlayer {
 
-    constructor(id, firstName, lastName, jerseyNumber) {
-      this.id = id;
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.jerseyNumber = jerseyNumber;
-    }
-  
-    fullName() {
-      return this.firstName + this.lastName;
-    }
+  constructor(id, firstName, lastName, jerseyNumber) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.jerseyNumber = jerseyNumber;
+    this.fullName = firstName + " " + lastName;
   }
-  
-export class Roster {
-  
-    constructor(id) {
-      this.id = id;
-      this.players = [];
-    }
-  
-    addPlayer(player) {
-      this.players.push(player);
-    }
-  }
-  
-export class ConferenceTeam {
+}
 
-    constructor(id, conference, teamName) {
-      this.id = id;
-      this.conference = conference;
-      this.teamName = teamName;
-    }
+class Roster {
+
+  constructor(id) {
+    this.id = id;
+    this.players = [];
   }
 
-export class TeamStatistics {
-  
+  addPlayer(player) {
+    this.players.push(player);
+  }
+}
+
+class ConferenceTeam {
+
+  constructor(id, conference, teamName) {
+    this.id = id;
+    this.conference = conference;
+    this.teamName = teamName;
+  }
+}
+
+class TeamStatistics {
+
   constructor(id, games, points, fieldGoalsMade, fieldGoalsAttempted, fieldGoalPercentage, freeThrowsMade, freeThrowsAttempted, freeThrowPerecentage, rebounds, assists, steals, turnovers, blocks) {
     this.id = id;
     this.games = games;
@@ -51,4 +48,6 @@ export class TeamStatistics {
     this.turnovers = turnovers;
     this.blocks = blocks;
   }
-  }
+}
+
+module.exports = { RosterPlayer, Roster, ConferenceTeam, TeamStatistics }
