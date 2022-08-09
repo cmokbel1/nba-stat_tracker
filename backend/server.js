@@ -50,6 +50,9 @@ app.get('/teams/:id/players', async (req, res) => {
     res.status(400).json({"error": "Id must be a number"})
     return;
   }
+  if (isNaN(req.query.season) && req.query.season.length !== 4) {
+    res.status(400).json({"error": "Invalid season"})
+  }
   const season = req.query.season || 2021;
   const data = await rapidapi.teams.getTeamPlayersBySeason(req.params.id, season);
   if (data.error) {
@@ -77,6 +80,9 @@ app.get('/teams/:id/statistics', async (req, res) => {
     res.status(400).json({"error": "Id must be a number"})
     return;
   }
+  if (isNaN(req.query.season) && req.query.season.length !== 4) {
+    res.status(400).json({"error": "Invalid season"})
+  }
   const season = req.query.season || 2021;
   const datas = await rapidapi.teams.getTeamStatisticsById(req.params.id, season);
   if (datas.error) {
@@ -84,7 +90,6 @@ app.get('/teams/:id/statistics', async (req, res) => {
     return;
   }
   const data = datas[0];
-  console.log(data);
   const teamStats = new TeamStatistics(req.params.id,
    data.games, data.points, data.fgm, data.fga, data.fgp,
     data.ftm, data.gta, data.ftp, data.totreb, data.assists,
@@ -113,30 +118,3 @@ app.get('/players/:id', async (req, res) => {
 app.listen(port, () => {
   console.log(`backend listening on port ${port}`)
 });
-
-/*
-Home Page - displays teams organized by conference
-  team: 
-    id - Number,
-    conference - string,
-    teamName - string
-
-Roster View - displays Players on team, [ team stats ]
-getTeamPlayersBySeason function
-
-  team:
-    id - Number,
-    teamName - string
-    players - []RosterPlayer
-  RosterPlayer:
-    id - Number,
-    fullName - string,
-    jerseyNumber - Number
-
-Player Detail View - displays detailed player stats
-  PlayerDetails:
-    id - Number,
-    fullName - string,
-    jerseyNumber - Number,
-
-*/
