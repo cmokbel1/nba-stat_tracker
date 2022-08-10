@@ -6,9 +6,11 @@ const getPlayerById = async (id) => {
         console.log(`fetching player: ${id}`);
         const player = await axios.get(`${cfg.baseUrl}/players?id=${id}`, cfg.requestConfig);
         if (player.data.response.length > 0) {
+            // returning the index 0 allows us to see the entire object, including the object data for leagues which gives us
+            // the players jersey number, as well as their position and active status
             return player.data.response[0];
         }
-        return { "error": `Player: ${id} Not Found` };
+        return { "error": `Player with ${id} not found` };
     } catch (err) {
         console.log(err);
         return { "error": err.message };
@@ -19,7 +21,6 @@ const getPlayerStatisticsById = async (id, season) => {
     try {
         console.log(`fetching player: ${id} statistics, from season: ${season} `);
         const opts = Object.assign({ params: { id, season }}, cfg.requestConfig);
-        console.log(opts);
         const player = await axios.get(`${cfg.baseUrl}/players/statistics`, opts);
         return player.data.response;
     } catch (err) {

@@ -13,9 +13,11 @@ class Roster {
 
   constructor(id) {
     this.id = id;
+    //array of RosterPlayer(s)
     this.players = [];
   }
 
+  //player is a RosterPlayer
   addPlayer(player) {
     this.players.push(player);
   }
