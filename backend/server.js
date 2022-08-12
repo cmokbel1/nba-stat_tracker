@@ -51,7 +51,7 @@ app.get('/teams/:id/players', async (req, res) => {
     res.status(400).json({"error": "Id must be a number"})
     return;
   }
-  if (isNaN(season) && season.length !== 4) {
+  if (isNaN(season) || season.length !== 4) {
     res.status(400).json({"error": "Invalid season"})
     return;
   }
@@ -82,7 +82,7 @@ app.get('/teams/:id/statistics', async (req, res) => {
     res.status(400).json({"error": "Id must be a number"})
     return;
   }
-  if (isNaN(season) && season.length !== 4) {
+  if (isNaN(season) || season.length !== 4) {
     res.status(400).json({"error": "Invalid season"})
     return;
   }
