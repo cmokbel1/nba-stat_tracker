@@ -7,17 +7,6 @@ const { RosterPlayer, Roster, ConferenceTeam, TeamStatistics } = require('./lib/
 
 app.use(cors());
 
-const validationCheck = (id, season = null) => {
-  if (isNaN(id)) {
-    res.status(400).json({"error": "Id must be a number"})
-    return;
-  }
-  if (isNaN(season) && season.length !== 4) {
-    res.status(400).json({"error": "Invalid season"})
-    return;
-  }
-};
-
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -43,7 +32,14 @@ app.get('/teams/conference/:conference', async (req, res) => {
 });
 
 app.get('/teams/:id', async (req, res) => {
-  validationCheck(req.params.id);
+  if (isNaN(req.params.id)) {
+    res.status(400).json({"error": "Id must be a number"})
+    return;
+  }
+  if (isNaN(season) && season.length !== 4) {
+    res.status(400).json({"error": "Invalid season"})
+    return;
+  }
   const data = await rapidapi.teams.getTeamById(req.params.id);
   if (data.error) {
     res.status(400).json(data.error);
@@ -55,7 +51,14 @@ app.get('/teams/:id', async (req, res) => {
 // get all players on a team for current season
 app.get('/teams/:id/players', async (req, res) => {
   const season = req.query.season || 2021;
-  validationCheck(req.params.id, season);
+  if (isNaN(req.params.id)) {
+    res.status(400).json({"error": "Id must be a number"})
+    return;
+  }
+  if (isNaN(season) && season.length !== 4) {
+    res.status(400).json({"error": "Invalid season"})
+    return;
+  }
   const data = await rapidapi.teams.getTeamPlayersBySeason(req.params.id, season);
   if (data.error) {
     res.status(400).json(data.error);
@@ -79,7 +82,14 @@ app.get('/teams/division/:division', async (req, res) => {
 
 app.get('/teams/:id/statistics', async (req, res) => {
   const season = req.query.season || 2021;
-  validationCheck(req.params.id,season);
+  if (isNaN(req.params.id)) {
+    res.status(400).json({"error": "Id must be a number"})
+    return;
+  }
+  if (isNaN(season) && season.length !== 4) {
+    res.status(400).json({"error": "Invalid season"})
+    return;
+  }
   const datas = await rapidapi.teams.getTeamStatisticsById(req.params.id, season);
   if (datas.error) {
     res.status(400).json(datas.error);
@@ -94,7 +104,14 @@ app.get('/teams/:id/statistics', async (req, res) => {
 })
 
 app.get('/players/:id', async (req, res) => {
-  validationCheck(req.params.id);
+  if (isNaN(req.params.id)) {
+    res.status(400).json({"error": "Id must be a number"})
+    return;
+  }
+  if (isNaN(season) && season.length !== 4) {
+    res.status(400).json({"error": "Invalid season"})
+    return;
+  }
   const data = await rapidapi.players.getPlayerById(req.params.id);
   if (data.error) {
     res.status(400).json(data.error);
