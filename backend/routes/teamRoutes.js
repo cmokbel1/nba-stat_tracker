@@ -37,7 +37,6 @@ router.get('/conference/:conference', async (req, res) => {
     res.json(conferenceTeams);
   });
   
-  
   // get all players on a team for current season
   router.get('/:id/players', async (req, res) => {
     const season = req.query.season || 2021;
@@ -93,6 +92,5 @@ router.get('/conference/:conference', async (req, res) => {
        data.steals, data.turnovers, data.blocks)
     res.json(teamStats);
   })
-  
 
 module.exports = router;
