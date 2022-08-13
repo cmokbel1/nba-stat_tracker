@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const rapidapi = require('./rapidapi');
-const { RosterPlayer } = require('./lib/models.js');
+const rapidapi = require('../rapidapi');
+const { RosterPlayer } = require('../lib/models.js');
 
-router.get('/players/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     if (isNaN(req.params.id)) {
       res.status(400).json({"error": "Id must be a number"})
       return;
