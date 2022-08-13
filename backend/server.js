@@ -7,9 +7,6 @@ const { RosterPlayer, Roster, ConferenceTeam, TeamStatistics } = require('./lib/
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 // get teams
 app.get('/teams/conference/:conference', async (req, res) => {
   const conf = req.params.conference.toLowerCase();
