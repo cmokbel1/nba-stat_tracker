@@ -1,24 +1,41 @@
 import { useState } from 'react';
-import { getTeamsByConference, getTeamById } from '../http/teams';
+import { getTeamsByConference, getTeamById, getTeamsByDivision } from '../http/teams';
 
 export const TeamRenderer = () => {
     const [teams, setTeams] = useState("");
     const [teamById, setTeamById] = useState("");
-    const [isClicked, setIsClicked] = useState(false);
+    const [westIsClicked, setWestIsClicked] = useState(false);
+    const [eastIsClicked, setEastIsClicked] = useState(false);
     const [error, setError] = useState("")
 
-    const handleGetTeams = async (conference) => {
+    const handleGetConferenceTeams = async (conference) => {
         const res = await getTeamsByConference(conference);
         if (res.error) {
             setError(res.error);
-        } else {
-            setTeamById("");
-            setIsClicked(true);
-            console.log(res);
-            setTeams(res);
+            return;
+        } 
+        if (conference === 'West') {
+            setWestIsClicked(true);
+            setEastIsClicked(false);
         }
+        if (conference === 'East') {
+            setEastIsClicked(true);
+            setWestIsClicked(false);
+        }
+            setTeamById("");
+            setTeams(res);
+    }
 
-    };
+    const HandleGetDivisionTeams = async (division) => {
+        const res= await getTeamsByDivision(division);
+        if (res.error) {
+            setError(res.error);
+            return;
+        }
+        console.log(res);
+        setTeams(res);
+        setWestIsClicked(true);
+    }
 
     const handleGetTeamById = async (id) => {
         const res = await getTeamById(id);
@@ -27,22 +44,23 @@ export const TeamRenderer = () => {
         } else {
             setTeams("")
             setTeamById(res);
-            console.log(res);
         }
     }
     let button = <div>
-        <button onClick={() => handleGetTeams("East")}>Eastern Conference</button>
-        <button onClick={() => handleGetTeams("West")}>Western Conference</button>
+        <button onClick={() => handleGetConferenceTeams("East")} disabled={eastIsClicked}>Eastern Conference</button>
+        <button onClick={() => handleGetConferenceTeams("West")} disabled={westIsClicked}>Western Conference</button>
+        <button onClick={() => HandleGetDivisionTeams("Atlantic")}>Test Division</button>
     </div>
 
     let body;
 
-    if (isClicked) {
+    if (westIsClicked || eastIsClicked) {
         if (teams) {
             body =
+            <div>
+                {button}
                 <ul>
-                    {teams.map((team, index) => {
-                        if (team.nbaFranchise) {
+                    {teams.map((team, index) => { 
                             return (
                                 <li key={index}>
                                     <button onClick={() => handleGetTeamById(`${team.id}`)}>{team.name}</button>
@@ -50,18 +68,16 @@ export const TeamRenderer = () => {
                                     {team.city}
                                 </li>
                             )
-                        }
-                        return null
                     })}
                 </ul>
+            </div>
         }
         if (teamById) {
-            console.log(teamById);
             body =
                 <div>
                     <h1>{teamById[0].name}</h1>
                     <img src={teamById[0].logo} alt="logo" />
-                    <button onClick={() => handleGetTeams(`${teamById[0].leagues.standard.conference}`)}>Go Back</button>
+                    <button onClick={() => handleGetConferenceTeams(`${teamById[0].leagues.standard.conference}`)}>Go Back</button>
                 </div>
         }
     } else {
