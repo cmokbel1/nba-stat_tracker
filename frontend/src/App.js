@@ -1,5 +1,5 @@
 import './App.css';
-import { TeamRenderer } from './components/teamRenderer'
+import { DivisionView } from './components/divisionView'
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <h1>Welcome to the NBA Stat Tracker</h1>
       </header>
         <h1>Website Under Construction</h1>
-        <TeamRenderer />
+        <DivisionView />
     </div>
   );
 }
