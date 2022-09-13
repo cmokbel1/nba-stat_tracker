@@ -50,23 +50,47 @@ export const DivisionView = () => {
     if (teams && !loading) {
         body =
             <div>
-                {teams.map((division, index) => {
+                {teams.map((division) => {
                     return (
-                        <ul>
-                            {division.map((team, teamIndex) => {
-                                if (team.nbaFranchise) {
+                        <>
+                            <h3>Northwest</h3>
+                            <ul>
+                                {division[0].map((team, index) => {
+                                    if (team.nbaFranchise) {
+                                        return (
+                                            <>
+                                                <li key={index}>{team.name}</li>
+                                                <img style={{ height: '150px', width: '150px' }} src={team.logo} alt="logo" />
+                                            </>
+                                        )
+                                    } else {
+                                        return null;
+                                    }
+                                })}
+                            </ul>
+                            <h3>Pacific</h3>
+                            <ul>
+                                {division[1].map((team, index) => {
                                     return (
-                                        <>
-                                    <li key={teamIndex}>{team.name}</li>
-                                    <img style={{height: '150px', width: '150px'}} src={team.logo} alt="logo"/>
+                                    <>
+                                        <li key={index}>{team.name}</li>
+                                        <img style={{ height: '150px', width: '150px' }} src={team.logo} alt="logo" />
                                     </>
                                     )
-                                } else {
-                                    return null;
-                                }
-                            })}
-                        </ul>
-                    )
+                                })}
+                            </ul>
+                            <h3>Southwest</h3>
+                            <ul>
+                                {division[2].map((team, index) => {
+                                    return (
+                                    <>
+                                        <li key={index}>{team.name}</li>
+                                        <img style={{ height: '150px', width: '150px' }} src={team.logo} alt="logo" />
+                                    </>
+                                    )
+                                })}
+                            </ul>
+                        </>)
 
                 }
                 )}
