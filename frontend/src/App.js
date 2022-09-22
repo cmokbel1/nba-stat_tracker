@@ -4,21 +4,20 @@ import { DivisionView } from './components/divisionView'
 
 function App() {
   return (
-    <div>
-      <header>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<DivisionView />} />
-            {/* <Route path=":teamId" element={<Team />} /> */}
-          </Routes>
-          <nav>
-            <Link to="/">Home</Link>
-          </nav>
-        </BrowserRouter>
-        <h1>Welcome to the NBA Stat Tracker</h1>
-      </header>
+    <>
+    
+      <BrowserRouter>
+      <nav>
+          <Link to="/">Home</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<DivisionView />} />
+          {/* <Route path=":teamId" element={<Team />} /> */}
+        </Routes>
+      </BrowserRouter>
+      <h1>Welcome to the NBA Stat Tracker</h1>
       <h1>Website Under Construction</h1>
-    </div>
+    </>
   );
 }
 
