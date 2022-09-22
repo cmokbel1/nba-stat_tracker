@@ -54,17 +54,19 @@ export const DivisionView = () => {
         body =
             <div>
                 {divisions.map((division, divIndex) => {
-                    return division.teams.map((team, teamIndex) => {
+                    return (
+                        <>
+                        <h1>{division.name}</h1>
+                        <ul>
+                        {division.teams.map((team, teamIndex) => {
                         if (team.nbaFranchise) {
                             return (
-                                <>
-                                <h1>{division.name}</h1>
-                                <ul>
                                     <TeamListCard team={team} key={teamIndex} />
-                                </ul>
-                                </>
                             )} else return null
-                    })
+                    })}
+                        </ul>
+                        </>
+                    )
                 })
                 }
             </div>
