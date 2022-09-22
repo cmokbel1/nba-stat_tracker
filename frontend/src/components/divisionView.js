@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getTeamById, getTeamsByDivision } from '../http/teams';
+import { TeamListCard } from './teamListCard'
 
 export const DivisionView = () => {
     //Northwest / Pacific / Southwest
     //Atlantic / Central / Southeast
-    const [teams, setTeams] = useState([]);
+    const [divisions, setDivisions] = useState([]);
     const [teamById, setTeamById] = useState("");
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export const DivisionView = () => {
         if (res.error) {
             setError(res.error);
         } else {
-            setTeams([])
+            setDivisions([])
             setTeamById(res);
         }
     }
@@ -29,71 +30,43 @@ export const DivisionView = () => {
             setError(res.error);
             return;
         }
-        setTeams(prev => [...prev, res]);
         console.log('data set');
+        return res
     }
 
     useEffect(() => {
-        const getDivisions = async () => {
-            setLoading(true)
-            await handleGetDivisionTeams("Northwest").then(console.log('Northwest data retrieved'));
-            await handleGetDivisionTeams("Pacific").then(console.log("Pacific data retrieved"));
-            await handleGetDivisionTeams("Southwest").then(console.log("Southwest data retrieved")).then(setLoading(false));
-            // await handleGetDivisionTeams("Atlantic").then(console.log("Atlantic data retrieved"));
-            // await handleGetDivisionTeams("Central").then(console.log("Central data retrieved"));
-            // await handleGetDivisionTeams("Southeast").then(console.log("Southeast data retrieved"));
-        }
-        getDivisions();
+        setLoading(true);
+        const getDivisions = (divisionNames) => {
+            return Promise.all(divisionNames.map((name) =>
+                handleGetDivisionTeams(name).then((result) => ({ name, teams: result })
+            )))
+        };
+        getDivisions(['Northwest', 'Pacific', 'Southwest']).then((data) => {
+            setDivisions(data);
+        }).finally(() => {
+            setLoading(false);
+        });
     }, [])
 
     let body;
-    if (teams && !loading) {
+    if (divisions && !loading) {
+        console.log(divisions);
         body =
             <div>
-                {teams.map((division) => {
-                    return (
-                        <>
-                            <h3>Northwest</h3>
-                            <ul>
-                                {division[0].map((team, index) => {
-                                    if (team.nbaFranchise) {
-                                        return (
-                                            <>
-                                                <li key={index}>{team.name}</li>
-                                                <img style={{ height: '150px', width: '150px' }} src={team.logo} alt="logo" />
-                                            </>
-                                        )
-                                    } else {
-                                        return null;
-                                    }
-                                })}
-                            </ul>
-                            <h3>Pacific</h3>
-                            <ul>
-                                {division[1].map((team, index) => {
-                                    return (
-                                    <>
-                                        <li key={index}>{team.name}</li>
-                                        <img style={{ height: '150px', width: '150px' }} src={team.logo} alt="logo" />
-                                    </>
-                                    )
-                                })}
-                            </ul>
-                            <h3>Southwest</h3>
-                            <ul>
-                                {division[2].map((team, index) => {
-                                    return (
-                                    <>
-                                        <li key={index}>{team.name}</li>
-                                        <img style={{ height: '150px', width: '150px' }} src={team.logo} alt="logo" />
-                                    </>
-                                    )
-                                })}
-                            </ul>
-                        </>)
-
+                {divisions.map((division, divIndex) => {
+                    return division.teams.map((team, teamIndex) => {
+                        if (team.nbaFranchise) {
+                            return (
+                                <>
+                                <h1>{division.name}</h1>
+                                <ul>
+                                    <TeamListCard team={team} key={teamIndex} />
+                                </ul>
+                                </>
+                            )} else return null
+                    })
+                })
                 }
-                )}
             </div>
         return body
     }
