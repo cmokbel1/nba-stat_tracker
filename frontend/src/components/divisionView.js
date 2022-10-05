@@ -1,27 +1,13 @@
 import { useState, useEffect } from 'react';
-import { getTeamById, getTeamsByDivision } from '../http/teams';
+import { getTeamsByDivision } from '../http/teams';
 import { TeamListCard } from './teamListCard'
 
 export const DivisionView = () => {
     //Northwest / Pacific / Southwest
     //Atlantic / Central / Southeast
     const [divisions, setDivisions] = useState([]);
-    const [teamById, setTeamById] = useState("");
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false);
-    // maybe get all teams
-    // set teams with one state
-    // run a conditional if team.division = ? 
-
-    const handleGetTeamById = async (id) => {
-        const res = await getTeamById(id);
-        if (res.error) {
-            setError(res.error);
-        } else {
-            setDivisions([])
-            setTeamById(res);
-        }
-    }
 
     const handleGetDivisionTeams = async (division) => {
         const res = await getTeamsByDivision(division);
@@ -50,18 +36,18 @@ export const DivisionView = () => {
 
     let body;
     if (divisions && !loading) {
-        console.log(divisions);
         body =
             <div>
                 {divisions.map((division, divIndex) => {
+                    // add inline styling to display all division teams together
                     return (
                         <>
-                        <h1>{division.name}</h1>
+                        <h1 key={divIndex}>{division.name}</h1>
                         <ul>
                         {division.teams.map((team, teamIndex) => {
                         if (team.nbaFranchise) {
                             return (
-                                    <TeamListCard team={team} key={teamIndex} />
+                                    <TeamListCard team={team} key={teamIndex} setError={setError} />
                             )} else return null
                     })}
                         </ul>
@@ -70,6 +56,9 @@ export const DivisionView = () => {
                 })
                 }
             </div>
+        if (!divisions && !loading) {
+            body = error;
+        }
         return body
     }
 }

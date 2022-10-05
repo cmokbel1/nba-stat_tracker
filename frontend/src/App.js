@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { DivisionView } from './components/divisionView'
+import { DivisionView } from './components/divisionView';
+import { TeamView } from './components/teamView';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<DivisionView />} />
-          {/* <Route path=":teamId" element={<Team />} /> */}
+          <Route path="team/:teamId" element={<TeamView />} />
         </Routes>
       </BrowserRouter>
       <h1>Welcome to the NBA Stat Tracker</h1>
