@@ -6,18 +6,19 @@ import { TeamView } from './components/teamView';
 function App() {
   return (
     <>
-    
+
       <BrowserRouter>
-      <nav>
+        <nav>
           <Link to="/">Home</Link>
         </nav>
+        <h1>Welcome to the NBA Stat Tracker</h1>
+        <h1>Website Under Construction</h1>
         <Routes>
           <Route path="/" element={<DivisionView />} />
           <Route path="team/:teamId" element={<TeamView />} />
         </Routes>
       </BrowserRouter>
-      <h1>Welcome to the NBA Stat Tracker</h1>
-      <h1>Website Under Construction</h1>
+
     </>
   );
 }

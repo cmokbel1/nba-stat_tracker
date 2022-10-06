@@ -11,7 +11,6 @@ export const DivisionView = () => {
 
     const handleGetDivisionTeams = async (division) => {
         const res = await getTeamsByDivision(division);
-        console.log(res);
         if (res.error) {
             setError(res.error);
             return;
@@ -25,7 +24,7 @@ export const DivisionView = () => {
         const getDivisions = (divisionNames) => {
             return Promise.all(divisionNames.map((name) =>
                 handleGetDivisionTeams(name).then((result) => ({ name, teams: result })
-            )))
+                )))
         };
         getDivisions(['Northwest', 'Pacific', 'Southwest']).then((data) => {
             setDivisions(data);
@@ -42,15 +41,16 @@ export const DivisionView = () => {
                     // add inline styling to display all division teams together
                     return (
                         <>
-                        <h1 key={divIndex}>{division.name}</h1>
-                        <ul>
-                        {division.teams.map((team, teamIndex) => {
-                        if (team.nbaFranchise) {
-                            return (
-                                    <TeamListCard team={team} key={teamIndex} setError={setError} />
-                            )} else return null
-                    })}
-                        </ul>
+                            <h1 key={divIndex}>{division.name}</h1>
+                            <ul>
+                                {division.teams.map((team, teamIndex) => {
+                                    if (team.nbaFranchise) {
+                                        return (
+                                            <TeamListCard team={team} index={teamIndex} setError={setError} />
+                                        )
+                                    } else return null
+                                })}
+                            </ul>
                         </>
                     )
                 })
