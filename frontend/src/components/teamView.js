@@ -42,6 +42,7 @@ export const TeamView = () => {
         });
     }, [teamId]);
 
+    console.log(teamToRender);
     ; let body;
     // teamToRender at index 0 is the team api call. at the 0th index of index 0 we find the actual data from the call.
     //  index 1 is the roster of players

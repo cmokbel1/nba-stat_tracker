@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DivisionView />} />
           <Route path="team/:teamId" element={<TeamView />} />
+          {/* <Route path="player/:playerId" element={<PlayerView />} /> */}
         </Routes>
       </BrowserRouter>
 
