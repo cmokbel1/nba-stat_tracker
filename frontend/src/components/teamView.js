@@ -45,7 +45,7 @@ export const TeamView = () => {
     ; let body;
     // teamToRender at index 0 is the team api call. at the 0th index of index 0 we find the actual data from the call.
     //  index 1 is the roster of players
-    // this may change when backend is updated to reflect class
+    // this may change when backend is updated to reflect class models
     if (teamToRender.length) {
         body =
             <>
@@ -57,11 +57,11 @@ export const TeamView = () => {
                             return null
                         } else {
                             return ( 
-                            <li key={index}>
+                            <Link to={`player/${player.id}`} key={index}>
                             {player.firstname}<br></br>
                             {player.lastname}<br></br>
                             {player.birth.date}
-                             </li>
+                             </Link>
                             )
                         }
                     })}
