@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const rapidapi = require('../rapidapi');
-const { Roster, ConferenceTeam, TeamStatistics } = require('../lib/models.js');
+const { Roster, ConferenceTeam, TeamStatistics, RosterPlayer } = require('../lib/models.js');
 
 // get teams by id
 router.get('/:id', async (req, res) => {
@@ -55,7 +55,7 @@ router.get('/conference/:conference', async (req, res) => {
     }
     const roster = new Roster(req.params.id)
     for (let i=0; i <= data.length; i++) {
-      roster.addPlayer(data[i])
+      roster.addPlayer(RosterPlayer(data[i]));
     }
     res.json(roster);
   })
