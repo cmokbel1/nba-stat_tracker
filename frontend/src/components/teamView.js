@@ -54,14 +54,13 @@ export const TeamView = () => {
                 <img src={teamToRender[0][0].logo} alt="team logo" />
                 <ul>
                     {teamToRender[1].players.map((player,index) => {
-                        if (player === null || player.nba.start === 0) {
+                        if (player === null) {
                             return null
                         } else {
                             return ( 
                             <Link to={`player/${player.id}`} key={index}>
                             {player.firstname}<br></br>
                             {player.lastname}<br></br>
-                            {player.birth.date}
                              </Link>
                             )
                         }
