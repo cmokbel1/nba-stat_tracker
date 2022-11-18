@@ -50,18 +50,22 @@ export const TeamView = () => {
     if (teamToRender.length) {
         body =
             <>
+            <div className="team-title">
                 <h1>{teamToRender[0][0].name}</h1>
                 <img src={teamToRender[0][0].logo} alt="team logo" />
-                <ul>
+            </div>
+                <ul className="team-players">
                     {teamToRender[1].players.map((player,index) => {
                         if (player === null) {
                             return null
                         } else {
                             return ( 
+                                <>
                             <Link to={`player/${player.id}`} key={index}>
-                            {player.firstname}<br></br>
-                            {player.lastname}<br></br>
+                                {player.fullName}
                              </Link>
+                             <br></br>
+                             </>
                             )
                         }
                     })}
