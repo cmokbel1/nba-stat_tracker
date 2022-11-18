@@ -54,8 +54,12 @@ router.get('/conference/:conference', async (req, res) => {
       return;
     }
     const roster = new Roster(req.params.id)
-    for (let i=0; i <= data.length; i++) {
-      roster.addPlayer(RosterPlayer(data[i]));
+    console.log(data[0]);
+    for (let i=0; i < data.length; i++) {
+      if (data[i].leagues.standard) {
+      let newPlayer = new RosterPlayer(data[i].id, data[i].firstname, data[i].lastname, data[i].leagues.standard.jersey);
+      roster.addPlayer(newPlayer);
+      }
     }
     res.json(roster);
   })
