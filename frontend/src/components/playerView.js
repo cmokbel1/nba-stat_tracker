@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react';
 import { getPlayer } from '../http/players';
 
 export const PlayerView = () => {
+    
     const playerId = useParams().playerId;
     console.log("params:" + playerId);
     const  [player, setPlayer] = useState();
     const [playerError, setPlayerError] = useState("");
+
     const handleGetPlayer = async (playerId) => {
         const res = await getPlayer(playerId);
         if (res.error) {
