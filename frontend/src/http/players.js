@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8081/teams';
+const baseUrl = require('./config');
 
 async function getPlayer(id) {
     try {

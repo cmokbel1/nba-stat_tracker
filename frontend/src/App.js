@@ -11,12 +11,10 @@ function App() {
         <nav>
           <Link to="/">Home</Link>
         </nav>
-        <h1>Welcome to the NBA Stat Tracker</h1>
-        <h1>Website Under Construction</h1>
         <Routes>
           <Route path="/" element={<DivisionView />} />
-          <Route path="team/:teamId" element={<TeamView />} />
-          <Route path="player/:playerId" element={<PlayerView />} />
+          <Route path="/team/:teamId" element={<TeamView />} />
+          <Route path="/player/:playerId" element={<PlayerView />} />
         </Routes>
       </BrowserRouter>
 

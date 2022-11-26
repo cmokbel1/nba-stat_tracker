@@ -61,7 +61,7 @@ export const TeamView = () => {
                         } else {
                             return ( 
                                 <>
-                            <Link to={`player/${player.id}`} key={index}>
+                            <Link to={`/player/${player.id}`} key={index}>
                                 {player.fullName}
                              </Link>
                              <br></br>

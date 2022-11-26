@@ -1,9 +1,9 @@
-const baseUrl = 'http://localhost:8081/teams';
+const baseUrl = require('./config');
 
 //retrieve multiple teams
 async function getTeamsByConference(conference) {
     try {
-        const res = await fetch(`${baseUrl}/conference/${conference}`, { mode: 'cors' });
+        const res = await fetch(`${baseUrl}/teams/conference/${conference}`, { mode: 'cors' });
         if (res.status !== 200) {
             return { "error": `bad status ${res.status}`};
         }
@@ -16,7 +16,7 @@ async function getTeamsByConference(conference) {
 
 async function getTeamsByDivision(division) {
     try {
-        const res = await fetch(`${baseUrl}/division/${division}`, { mode: 'cors' });
+        const res = await fetch(`${baseUrl}/teams/division/${division}`, { mode: 'cors' });
         if (res.status !== 200) {
             return { "error": `bad status ${res.status}` };
         }
@@ -29,7 +29,7 @@ async function getTeamsByDivision(division) {
 
 async function getTeamsPlayers(id) {
     try {
-        const res = await fetch(`${baseUrl}/${id}/players`, { mode: 'cors' });
+        const res = await fetch(`${baseUrl}/teams/${id}/players`, { mode: 'cors' });
         if (res.status !== 200) {
             return { "error": `bad status ${res.status}`};
         }
@@ -43,7 +43,7 @@ async function getTeamsPlayers(id) {
 //retrieve an individual team
 async function getTeamById(id) {
     try {
-        const res = await fetch(`${baseUrl}/${id}`, { mode: 'cors'});
+        const res = await fetch(`${baseUrl}/teams/${id}`, { mode: 'cors'});
         if (res.status !== 200) {
             return { "error": `bad status ${res.status}`};
         }

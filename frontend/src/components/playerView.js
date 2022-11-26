@@ -13,7 +13,6 @@ export const PlayerView = () => {
             setPlayerError(res.error);
             return;
         } else {
-            console.log(res)
             return res
         }
     }
@@ -29,7 +28,8 @@ export const PlayerView = () => {
 
     return (
         <div>
-            <h1>It's working... I think</h1>
+            <h1>{player.fullName}</h1>
+            <h2>{player.jerseyNumber}</h2>
         </div>
     )
 }
