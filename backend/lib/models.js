@@ -9,6 +9,17 @@ class RosterPlayer {
   }
 }
 
+class RosterPlayerStats {
+
+  constructor(id, points,fgm, fga, assists) {
+    this.id = id;
+    this.points = points;
+    this.fieldGoalsMade = fgm;
+    this.fieldGoalsAttempted = fga;
+    this.assists = assists;
+  }
+}
+
 class Roster {
 
   constructor(id) {
@@ -52,4 +63,4 @@ class TeamStatistics {
   }
 }
 
-module.exports = { RosterPlayer, Roster, ConferenceTeam, TeamStatistics }
+module.exports = { RosterPlayer, RosterPlayerStats, Roster, ConferenceTeam, TeamStatistics }
