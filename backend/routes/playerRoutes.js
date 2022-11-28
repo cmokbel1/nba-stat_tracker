@@ -37,18 +37,15 @@ router.get('/:id/statistics', async (req, res) => {
   let totalFga = 0;
   let totalAssists = 0;
   for (let i=0; i < data.length; i++) {
-    if (data[i].points !== null && data[i].points !== 0) {
-      totalPoints += data[i].points;
-    }
-    if (data[i].fgm !== null && data[i].fgm !== 0) {
-      totalFgm += data[i].fgm;
-    }
-    if (data[i].fga !== null && data[i].fga !== 0) {
-      totalFga += data[i].fga;
-    }
-    if (data[i].assists !== null && data[i].assists !== 0) {
-      totalAssists += data[i].assists;
-    }
+    const points = data[i].points;
+    const fgm = data[i].fgm;
+    const fga = data[i].fga;
+    const assists = data[i].assists;
+    // add non null values to totals 
+    totalPoints += points !== null ? points : 0;
+    totalFgm += fgm !== null ? fgm : 0;
+    totalFga += fga !== null ? fga : 0;
+    totalAssists += assists !== null ? assists : 0;
   }
   let playerStats = new RosterPlayerStats(teamId,totalPoints, totalFgm, totalFga, totalAssists);
   console.log(playerStats)
