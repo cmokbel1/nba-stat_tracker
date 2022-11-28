@@ -56,7 +56,7 @@ router.get('/:id/statistics', async (req, res) => {
     totalBlocks += blocks !== null ? blocks : 0;
     totalTurnovers += turnovers !== null ? turnovers : 0;
   }
-  let playerStats = new RosterPlayerStats(teamId,totalPoints, totalFgm, totalFga, totalAssists);
+  const playerStats = new RosterPlayerStats(teamId,totalPoints, totalFgm, totalFga, totalAssists, totalSteals, totalBlocks, totalTurnovers);
   res.json(playerStats);
 })
 
