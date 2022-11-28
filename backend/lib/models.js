@@ -11,12 +11,16 @@ class RosterPlayer {
 
 class RosterPlayerStats {
 
-  constructor(id, points,fgm, fga, assists) {
+  constructor(id, points,fgm, fga, assists, steals, blocks, turnovers) {
     this.teamId = id;
     this.points = points;
     this.fieldGoalsMade = fgm;
     this.fieldGoalsAttempted = fga;
     this.assists = assists;
+    this.steals = steals;
+    this.blocks = blocks;
+    this.turnovers = turnovers;
+    this.fieldGoalPercentage = (fieldGoalsMade / fieldGoalsAttempted).toFixed(2);
   }
 }
 
