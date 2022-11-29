@@ -41,39 +41,39 @@ export const TeamView = () => {
             setTeamToRender(data)
         });
     }, [teamId]);
-
     console.log(teamToRender);
-    ; let body;
+    let body;
     // teamToRender at index 0 is the team api call. at the 0th index of index 0 we find the actual data from the call.
     //  index 1 is the roster of players
     // this may change when backend is updated to reflect class models
-    if (teamToRender.length) {
-        body =
-            <>
+    teamToRender.length ? body =
+        <>
             <div className="team-title">
                 <h1>{teamToRender[0][0].name}</h1>
                 <img src={teamToRender[0][0].logo} alt="team logo" />
             </div>
-                <ul className="team-players">
-                    {teamToRender[1].players.map((player,index) => {
-                        if (player === null) {
-                            return null
-                        } else {
-                            return ( 
-                                <>
-                            <Link to={`/player/${player.id}`} key={index}>
-                                {player.fullName}
-                             </Link>
-                             <br></br>
-                             </>
-                            )
-                        }
-                    })}
-                </ul>
+            <ul className="team-players">
+                {teamToRender[1].players.map((player, index) => {
+                    if (player === null) {
+                        return null
+                    } else {
+                        return (
+                            <>
+                                <div className="team-player-card">
+                                    <Link to={`/player/${player.id}`} key={index}>
+                                        {player.fullName}
+                                    </Link>
+                                </div>
+                                <br></br>
+                            </>
+                        )
+                    }
+                })}
+            </ul>
 
-            </>
-    } else {
+        </>
+        :
         body = <h1>{teamError}</h1>;
-    }
+
     return body;
 }

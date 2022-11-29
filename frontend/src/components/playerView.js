@@ -58,7 +58,7 @@ export const PlayerView = () => {
                 <p>Blocks: {player[1].blocks}</p>
                 <p>Turnovers: {player[1].turnovers}</p>
             </div>
-        </div> : body = <p>loading</p>;
+        </div> : body = <p>loading...</p>;
 
         return body
 
