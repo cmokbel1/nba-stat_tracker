@@ -39,27 +39,27 @@ export const PlayerView = () => {
     }, [playerId]);
 
     console.log(player);
-    let body;
-
-    player.length ? body =
+    if (!player.length) {
+        return <p>loading...</p>
+    }
+    return (
         <div>
             <div className="player-card">
-            <h1>{player[0].fullName}</h1>
-            <h1>{player[0].jerseyNumber}</h1>
+                <h1>{player[0].fullName}</h1>
+                <h1>{player[0].jerseyNumber}</h1>
             </div>
             <div className="player-card">
                 <h2>Season Stats</h2>
                 <p>Points: {player[1].points}</p>
-                <p>Field Goals: {player[1].fieldGoalsMade}</p>
-                <p>Attempted: {player[1].fieldGoalsAttempted} </p>
-                <p>Percentage: {player[1].fieldGoalPercentage}</p>
+                <p>FG: {player[1].fieldGoalsMade}</p>
+                <p>Attempts: {player[1].fieldGoalsAttempted} </p>
+                <p>FG Percentage: {player[1].fieldGoalPercentage * 100}%</p>
                 <p>Assists: {player[1].assists}</p>
                 <p>Steals: {player[1].steals}</p>
                 <p>Blocks: {player[1].blocks}</p>
                 <p>Turnovers: {player[1].turnovers}</p>
+                <p>Rebounds: {player[1].rebounds}</p>
             </div>
-        </div> : body = <p>loading...</p>;
-
-        return body
-
+        </div>
+    )
 }
