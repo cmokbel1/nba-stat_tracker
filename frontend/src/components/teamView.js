@@ -96,7 +96,7 @@ export const TeamView = () => {
                     }
                 })}
             </ul>
-
+            <button className="return-button" onClick={window.history.back()}>Go Back</button>
         </>
     )
 }
