@@ -29,8 +29,8 @@ export const PlayerView = () => {
     useEffect(() => {
         const fetch = (playerId) => {
             return Promise.all([
-                handleGetPlayer(playerId).then((result) => result),
-                handleGetPlayerStats(playerId).then((result) => result)
+                handleGetPlayer(playerId),
+                handleGetPlayerStats(playerId)
             ])
         }
         fetch(playerId).then((data) => {
