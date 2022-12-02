@@ -36,13 +36,13 @@ export const DivisionView = () => {
     let body;
     if (divisions && !loading) {
         body =
-            <div>
+            <div className="divisions-wrapper">
                 {divisions.map((division, divIndex) => {
                     // add inline styling to display all division teams together
                     return (
                         <>
-                            <h1 key={divIndex}>{division.name}</h1>
-                            <ul>
+                            <h1 className="divisions-title" key={divIndex}>{division.name}</h1>
+                            <ul className="divisions-team-list">
                                 {division.teams.map((team, teamIndex) => {
                                     if (team.nbaFranchise) {
                                         return (
