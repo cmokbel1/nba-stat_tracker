@@ -60,7 +60,7 @@ export const PlayerView = () => {
                 <p>Turnovers: {player[1].turnovers}</p>
                 <p>Rebounds: {player[1].rebounds}</p>
             </div>
-            <button className="return-button" onClick={window.history.back()}>Go Back</button>
+            <button className="return-button" onClick={() => {window.history.back() }}>Go Back</button>
         </div>
     )
 }

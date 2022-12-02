@@ -60,7 +60,7 @@ export const TeamView = () => {
     }
 
     return (
-        <>
+        <div className="team-card">
             <div className="team-title">
                 <h1>{teamToRender[0][0].name}</h1>
                 <img src={teamToRender[0][0].logo} alt="team logo" />
@@ -87,7 +87,8 @@ export const TeamView = () => {
                             <>
                                 <div className="team-player-card">
                                     <Link to={`/player/${player.id}`} key={index}>
-                                        {player.fullName}
+                                        <h2>{player.fullName}</h2>
+                                        <h2>{player.jerseyNumber}</h2>
                                     </Link>
                                 </div>
                                 <br></br>
@@ -96,7 +97,7 @@ export const TeamView = () => {
                     }
                 })}
             </ul>
-            <button className="return-button" onClick={window.history.back()}>Go Back</button>
-        </>
+            <button className="return-button" onClick={() => { window.history.back()}}>Go Back</button>
+        </div>
     )
 }
