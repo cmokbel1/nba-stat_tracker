@@ -39,6 +39,7 @@ router.get('/:id/statistics', async (req, res) => {
   let totalSteals = 0;
   let totalBlocks = 0;
   let totalTurnovers = 0;
+  let totalRebounds = 0;
   for (let i=0; i < data.length; i++) {
     const points = data[i].points;
     const fgm = data[i].fgm;
@@ -47,6 +48,7 @@ router.get('/:id/statistics', async (req, res) => {
     const steals = data[i].steals;
     const blocks = data[i].blocks;
     const turnovers = data[i].turnovers;
+    const rebounds = data[i].totReb;
     // add non null values to totals 
     totalPoints += points !== null ? points : 0;
     totalFgm += fgm !== null ? fgm : 0;
@@ -55,8 +57,9 @@ router.get('/:id/statistics', async (req, res) => {
     totalSteals += steals !== null ? steals : 0;
     totalBlocks += blocks !== null ? blocks : 0;
     totalTurnovers += turnovers !== null ? turnovers : 0;
+    totalRebounds += rebounds !== null ? rebounds : 0;
   }
-  const playerStats = new RosterPlayerStats(teamId,totalPoints, totalFgm, totalFga, totalAssists, totalSteals, totalBlocks, totalTurnovers);
+  const playerStats = new RosterPlayerStats(teamId,totalPoints, totalFgm, totalFga, totalAssists, totalSteals, totalBlocks, totalTurnovers, totalRebounds);
   res.json(playerStats);
 })
 
