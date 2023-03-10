@@ -41,12 +41,12 @@ export const DivisionView = () => {
                     // add inline styling to display all division teams together
                     return (
                         <>
-                            <h1 className="divisions-title" key={divIndex}>{division.name}</h1>
-                            <ul className="divisions-team-list">
+                            <h1 className="divisions-title">{division.name}</h1>
+                            <ul className="divisions-team-list" key={divIndex}>
                                 {division.teams.map((team, teamIndex) => {
                                     if (team.nbaFranchise) {
                                         return (
-                                            <TeamListCard team={team} index={teamIndex} setError={setError} />
+                                            <TeamListCard team={team} key={teamIndex} setError={setError} />
                                         )
                                     } else return null
                                 })}

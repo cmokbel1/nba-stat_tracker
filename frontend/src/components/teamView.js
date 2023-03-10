@@ -62,33 +62,34 @@ export const TeamView = () => {
     return (
         <div className="team-card">
             <div className="team-title">
-                <h1>{teamToRender[0][0].name}</h1>
-                <img src={teamToRender[0][0].logo} alt="team logo" />
+                <img className="team-logo" src={teamToRender[0][0].logo} alt="team logo" />
             </div>
             <div className="team-stats">
-                <h1>Stats</h1>
+                <h1 className="category-title">Stats</h1>
+                <div className="team-statistics">
                 <p>Games Played: {teamToRender[2].games}</p>
                 <p>Total Points: {teamToRender[2].points}</p>
                 <p>Total FG: {teamToRender[2].fieldGoalsMade}</p>
                 <p>Total Attempts: {teamToRender[2].fieldGoalsAttempted}</p>
-                <p>FG Percentage: {teamToRender[2].fieldGoalPercentage}</p>
+                <p>FG %: {teamToRender[2].fieldGoalPercentage}</p>
                 <p>Total Free Throws: {teamToRender[2].freeThrowsMade}</p>
-                <p>Free Throw Percenrage: {teamToRender[2].freeThrowPercentage}</p>
+                <p>Free Throw %: {teamToRender[2].freeThrowPerecentage}</p>
                 <p>Total Assists: {teamToRender[2].assists}</p>
                 <p>Total Steals: {teamToRender[2].steals}</p>
                 <p>Total Turnovers: {teamToRender[2].turnovers}</p>
+                </div>
             </div>
             <ul className="team-players">
                 {teamToRender[1].players.map((player, index) => {
-                    if (player === null) {
+                    if (player === null || !player.jerseyNumber) {
                         return null
                     } else {
                         return (
                             <>
                                 <div className="team-player-card">
-                                    <Link to={`/player/${player.id}`} key={index}>
-                                        <h2>{player.fullName}</h2>
-                                        <h2>{player.jerseyNumber}</h2>
+                                    <Link className="nav-link-player" to={`/player/${player.id}`} key={index}>
+                                        <h1 className="team-player-name">{player.fullName}</h1>
+                                        <h2 className="team-player-number">{player.jerseyNumber}</h2>
                                     </Link>
                                 </div>
                                 <br></br>

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 
-export const TeamListCard = ({ team, index, setError }) => {
+export const TeamListCard = ({ team, key, setError }) => {
 
     return (
         <>
-            <li key={index} className="team-list-card">
-                <Link to={`/team/${team.id}`} style={{ textDecoration: 'none'}}>
-                    <img style={{ height: '150px', width: '150px' }} src={team.logo} alt="logo" />
+            <li key={key} className="team-list-card">
+                <Link to={`/team/${team.id}`} >
+                    <img style={{ height: '180px', width: '180px' }} src={team.logo} alt="logo" loading="lazy"/>
                 </Link>
             </li>
         </>
