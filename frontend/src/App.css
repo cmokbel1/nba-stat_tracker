@@ -95,6 +95,7 @@
   background-color:whitesmoke;
   border-radius: 10px;
   padding:10px;
+  text-decoration:none;
  }
 
  .return-button:hover {
@@ -196,6 +197,10 @@ animation: fadeIn 5s;
 -ms-animation: fadeIn 5s;
 }
 
+.team-list-card img {
+  height: 180px;
+  width: 180px;
+}
 .team-list-card:hover {
     transform: scale(1.1);
     transition: 0.5s all ease;
@@ -356,7 +361,16 @@ menu
   }
 
   @media only screen and (min-width: 760px) {
-  /* 
+  
+  /*
+  global
+  */
+  .return-button {
+    width:150px;
+    height: 50px;
+    font-size: 20px;
+  }
+    /* 
   divisions
   view [ home page ]
   styling 
@@ -375,7 +389,165 @@ menu
     }
 
     .team-list-card {
-      width: 145px;
-      height: 145px;
+      width: 125px;
+      height: 155px;
     }
+
+    .team-list-card img {
+      width: 120px;
+      height: 135px;
+    }
+    /*
+INDIVIDUAL
+TEAM
+VIEW
+*/
+
+.team-title, .team-stats {
+  width: 500px;
+  height: 500px;
+}
+
+.team-title img {
+  width: 400px;
+  height: 400px;
+}
+
+.category-title {
+  font-size: 80px;
+}
+
+.team-stats p {
+  font-size: 30px;
+  text-align:left;
+}
+
+.team-players {
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+}
+
+  @media only screen and (min-width: 912px) {
+   /* 
+  divisions
+  view [ home page ]
+  styling 
+  */
+  .divisions-team-list {
+    gap:15px;
   }
+
+  .team-list-card {
+    width: 150px;
+    height: 175px;
+    margin-bottom:1em;
+  }
+
+  .team-list-card img {
+    width: 145px;
+    height: 165px;
+  }
+
+  /*
+INDIVIDUAL
+TEAM
+VIEW
+*/
+.team-title, .team-stats {
+  width: 700px;
+  height: 700px;
+}
+
+.team-title img {
+  width: 500px;
+  height: 500px;
+}
+
+.team-stats p {
+  font-size: 40px;
+  text-align:left;
+}
+
+.team-player-card {
+  width: 230px;
+  height:250px;
+  padding: 0px;
+}
+
+}
+
+@media only screen and (min-width: 1024px) {
+  /* 
+  divisions
+  view [ home page ]
+  styling 
+  */
+
+  .divisions-team-list {
+    gap:20px;
+  }
+
+  .team-list-card {
+    width: 165px;
+  }
+
+  /*
+INDIVIDUAL
+TEAM
+VIEW
+*/
+
+  /*
+  footer
+  */
+  .site-footer-disclaimer {
+    color:whitesmoke;
+    display:inline-flex;
+    width: 650px;
+    margin-top:1em;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  /* 
+  divisions
+  view [ home page ]
+  styling 
+  */
+
+  .divisions-team-list {
+    justify-content: space-around;
+    width:100%;
+  }
+
+  .team-list-card {
+    width: 185px;
+  }
+
+  /*
+INDIVIDUAL
+TEAM
+VIEW
+*/
+}
+
+@media only screen and (min-width: 1600px) {
+
+  .team-list-card {
+    width: 225px;
+    height: 250px;
+  }
+
+  .team-list-card img {
+    width: 200px;
+    height: 225px;
+  }
+
+  /*
+INDIVIDUAL
+TEAM
+VIEW
+*/
+}

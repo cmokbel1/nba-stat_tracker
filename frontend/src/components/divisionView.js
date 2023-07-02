@@ -15,7 +15,6 @@ export const DivisionView = () => {
             setError(res.error);
             return;
         }
-        console.log('data set');
         return res
     }
 
@@ -38,7 +37,6 @@ export const DivisionView = () => {
         body =
             <div className="divisions-wrapper">
                 {divisions.map((division, divIndex) => {
-                    // add inline styling to display all division teams together
                     return (
                         <>
                             <h1 className="divisions-title">{division.name}</h1>
