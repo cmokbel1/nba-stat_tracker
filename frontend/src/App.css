@@ -427,6 +427,12 @@ VIEW
   flex-direction:row;
   flex-wrap: wrap;
 }
+/*
+INDIVIDUAL
+PLAYER
+VIEW
+ */
+ 
 }
 
   @media only screen and (min-width: 912px) {
@@ -531,10 +537,33 @@ INDIVIDUAL
 TEAM
 VIEW
 */
+  .team-title {
+    width: 1000px;
+    height: 1000px;
+    margin-top: 75px;
+  }
+  .team-title img {
+    width: 750px;
+    height: 750px;
+  }
+  .team-stats {
+    width: 1000px;
+  }
+  .team-players {
+    margin-top: 25px;
+    gap: 20px;
+  }
+  .team-player-card {
+    width: 275px;
+  }
 }
 
 @media only screen and (min-width: 1600px) {
-
+  /* 
+  divisions
+  view [ home page ]
+  styling 
+  */
   .team-list-card {
     width: 225px;
     height: 250px;
