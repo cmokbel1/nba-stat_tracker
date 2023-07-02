@@ -63,7 +63,7 @@ export const PlayerView = () => {
                 </div>
             </div>
             <button className="return-button" onClick={() => { window.history.back() }}>Go Back</button>
-            <Link to="/" className="return-button">Division View</Link>
+            <Link to="/"><button className="return-button">Divisions</button></Link>
         </div>
     )
 }

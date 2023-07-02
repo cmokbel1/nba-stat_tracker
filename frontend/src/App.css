@@ -432,7 +432,16 @@ INDIVIDUAL
 PLAYER
 VIEW
  */
- 
+ .player-card {
+  margin-top:65px;
+  width: 400px;
+ }
+ .team-player-name {
+  font-size:35px;
+ }
+ .team-player-number {
+  font-size: 150px;
+ }
 }
 
   @media only screen and (min-width: 912px) {
