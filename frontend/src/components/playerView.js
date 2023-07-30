@@ -51,18 +51,19 @@ export const PlayerView = () => {
             <div className="player-card">
                 <h2>Season Stats</h2>
                 <div className="player-statistics">
-                <p>Points: {player[1].points}</p>
-                <p>FG: {player[1].fieldGoalsMade}</p>
-                <p>Attempts: {player[1].fieldGoalsAttempted} </p>
-                <p>FG %: {player[1].fieldGoalPercentage * 100}%</p>
-                <p>Assists: {player[1].assists}</p>
-                <p>Steals: {player[1].steals}</p>
-                <p>Blocks: {player[1].blocks}</p>
-                <p>Turnovers: {player[1].turnovers}</p>
-                <p>Rebounds: {player[1].rebounds}</p>
+                    <p>Points: {player[1].points}</p>
+                    <p>FG: {player[1].fieldGoalsMade}</p>
+                    <p>Attempts: {player[1].fieldGoalsAttempted} </p>
+                    <p>FG %: {player[1].fieldGoalPercentage * 100}%</p>
+                    <p>Assists: {player[1].assists}</p>
+                    <p>Steals: {player[1].steals}</p>
+                    <p>Blocks: {player[1].blocks}</p>
+                    <p>Turnovers: {player[1].turnovers}</p>
+                    <p>Rebounds: {player[1].rebounds}</p>
                 </div>
             </div>
-            <button className="return-button" onClick={() => {window.history.back() }}>Go Back</button>
+            <button className="return-button" onClick={() => { window.history.back() }}>Go Back</button>
+            <Link to="/"><button className="return-button">Divisions</button></Link>
         </div>
     )
 }
