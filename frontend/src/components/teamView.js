@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTeamById, getTeamsPlayers, getTeamStats } from '../http/teams';
-import { useParams, Link } from "react-router-dom";
-
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 export const TeamView = () => {
     const [teamError, setTeamError] = useState("");
@@ -13,9 +12,9 @@ export const TeamView = () => {
         if (res.error) {
             setTeamError(res.error);
             return;
-        }
+        };
         return res;
-    }
+    };
     const handleGetTeamById = async (id) => {
         const res = await getTeamById(id);
         if (res.error) {
@@ -24,9 +23,9 @@ export const TeamView = () => {
         } if (!res[0].nbaFranchise) {
             setTeamError("error: invalid team id");
             return;
-        }
+        };
         return res;
-    }
+    };
 
     const handleGetTeamStats = async (id) => {
         const res = await getTeamStats(id);
@@ -35,7 +34,12 @@ export const TeamView = () => {
             return;
         }
         return res
-    }
+    };
+    let navigate = useNavigate();
+    const handleGoHome = () => {
+        let path = "/";
+        navigate(path);
+    };
     useEffect(() => {
         const getFullTeam = (id) => {
             return Promise.all([
@@ -98,7 +102,7 @@ export const TeamView = () => {
                     }
                 })}
             </ul>
-            <button className="return-button" onClick={() => { window.history.back()}}>Go Back</button>
+            <button className="return-button" onClick={() => { handleGoHome()}}>Go Back</button>
         </div>
     )
 }

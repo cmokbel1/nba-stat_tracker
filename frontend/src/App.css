@@ -272,7 +272,7 @@ p {
 .team-player-card {
   border: 0px;
   justify-content: space-around;
-  padding: 10px;
+  padding: 0px;
 
 }
 .team-player-name, .team-player-number {
@@ -513,7 +513,9 @@ INDIVIDUAL
 TEAM
 VIEW
 */
-
+ .team-player-card {
+  padding: 15px;
+ }
   /*
   footer
   */
