@@ -25,7 +25,7 @@ export const DivisionView = () => {
                 handleGetDivisionTeams(name).then((result) => ({ name, teams: result })
                 )))
         };
-        getDivisions(['Northwest', 'Pacific', 'Southwest']).then((data) => {
+        getDivisions(['Northwest', 'Pacific', 'Southwest', 'Atlantic', 'Central', 'Southeast']).then((data) => {
             setDivisions(data);
         }).finally(() => {
             setLoading(false);
