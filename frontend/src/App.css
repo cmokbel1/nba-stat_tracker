@@ -1,167 +1,179 @@
-@import url('https://fonts.googleapis.com/css2?family=Trochut:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Trochut:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unbounded&display=swap");
 * {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
-/*global */
-  // animation key frames //
-  //slide in //
-  @keyframes slideIn {
-    from {
-      transform: translateX(0%);
-    }
-  
-    to {
-      transform: translateX(100%);
-    }
+
+@keyframes slideIn {
+  from {
+    transform: translateX(0%);
   }
 
-  @-moz-keyframes slideIn {
-    from {
-      transform: translateX(0%);
-    }
-  
-    to {
-      transform: translateX(100%);
-    }
+  to {
+    transform: translateX(100%);
   }
-  
-  @-webkit-keyframes slideIn {
-    from {
-      transform: translateX(0%);
-    }
-  
-    to {
-      transform: translateX(100%);
-    }
+}
+
+@-moz-keyframes slideIn {
+  from {
+    transform: translateX(0%);
   }
 
-  @-o-keyframes slideIn {
-    from {
-      transform: translateX(0%);
-    }
-  
-    to {
-      transform: translateX(100%);
-    }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    transform: translateX(0%);
   }
 
-  @-ms-keyframes slideIn {
-    from {
-      transform: translateX(0%);
-    }
-  
-    to {
-      transform: translateX(100%);
-    }
+  to {
+    transform: translateX(100%);
   }
-  // fade in animation //
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+}
+
+@-o-keyframes slideIn {
+  from {
+    transform: translateX(0%);
   }
-  
-  @-moz-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+
+  to {
+    transform: translateX(100%);
   }
-  
-  @-webkit-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+}
+
+@-ms-keyframes slideIn {
+  from {
+    transform: translateX(0%);
   }
-  
-  @-o-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+
+  to {
+    transform: translateX(100%);
   }
-  
-  @-ms-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
- body {
-  background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./images/parallax-img.png);
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(./images/parallax-img.png);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width:100%;
- }
+  width: 100%;
+}
 
- .return-button {
+.return-button {
   font-family: Unbounded, sans-serif;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
   border-radius: 10px;
-  padding:10px;
-  text-decoration:none;
- }
+  padding: 10px;
+  text-decoration: none;
+}
 
- .return-button:hover {
-  background-color: #FAF3DD;
- }
+.return-button:hover {
+  background-color: #faf3dd;
+}
 
- .return-button:active {
+.return-button:active {
   transition: background-color 0.5s ease, opacity 0.5s;
   opacity: 0.8;
   background-color: darkgray;
- }
-/* 
-navigation 
-menu
- */ 
+}
+
 nav {
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    left: 0;
-    top:0;
-    height: 60px;
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    background-image: linear-gradient(#17408B, #C9082A);
-    box-shadow: 0 10px 10px 0 rgba(0,0,0,.5);
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-image: linear-gradient(#17408b, #c9082a);
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .nav-link {
-    text-decoration: none;
-    color: whitesmoke;
-    margin:0;
-    padding:0;
-    font-family: 'Trochut', sans-serif;
-    font-weight: 400;
+  text-decoration: none;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0;
+  font-family: "Trochut", sans-serif;
+  font-weight: 400;
 }
 
 .nav-svg {
-    margin-right:auto;
+  margin-right: auto;
 }
 
 .nav-link:hover {
-    background-color: rgba(128,128,128,0.2);
+  background-color: rgba(128, 128, 128, 0.2);
 }
-/* 
-divisions
- view [ home page ]
- styling 
- */
+
 .divisions-wrapper {
-    margin-top: 80px;
-    display:flex;
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-    text-align:center;
-    align-items:center;
-    margin-bottom:100px;
+  margin-top: 80px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 100px;
 }
 .divisions-title {
-  margin-bottom:20px;
+  margin-bottom: 20px;
   font-family: Unbounded, Open-sans sans-serif;
   background-color: whitesmoke;
   border-radius: 10px;
-  width:75%;
+  width: 75%;
   box-shadow: 5px 10px 5px 0px black;
   text-shadow: 3px 3px lightgray;
   animation: slideIn 5s;
@@ -171,30 +183,30 @@ divisions
   -ms-animation: slideIn 5s;
 }
 .divisions-team-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .team-list-card {
-border: 3px solid darkgray;
-width: 225px;
-height: 225px;
-margin: auto;
-padding: 5px;
-margin-bottom: 2em;
-border-radius: 15px;
-opacity: 0.8;
-display:flex;
-justify-content:center;
-align-items:center;
-background-color: whitesmoke;
-box-shadow: 0 5px 5px 5px rgba(0,0,0,.5);
-animation: fadeIn 5s;
--webkit-animation: fadeIn 5s;
--moz-animation: fadeIn 5s;
--o-animation: fadeIn 5s;
--ms-animation: fadeIn 5s;
+  border: 3px solid darkgray;
+  width: 225px;
+  height: 225px;
+  margin: auto;
+  padding: 5px;
+  margin-bottom: 2em;
+  border-radius: 15px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
 }
 
 .team-list-card img {
@@ -202,9 +214,9 @@ animation: fadeIn 5s;
   width: 180px;
 }
 .team-list-card:hover {
-    transform: scale(1.1);
-    transition: 0.5s all ease;
-    box-shadow: 0 5px 5px 5px rgba(0,0,0,.5);
+  transform: scale(1.1);
+  transition: 0.5s all ease;
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 /*
@@ -214,19 +226,19 @@ VIEW
 */
 
 h1 {
-  text-align:center;
+  text-align: center;
 }
 
 p {
-  margin-left:auto;
-  text-align:left;
+  margin-left: auto;
+  text-align: left;
   font-size: 18px;
 }
 .team-card {
-  font-family: 'Unbounded', sans-serif;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  font-family: "Unbounded", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 125px;
   margin-top: 80px;
   gap: 1em;
@@ -235,7 +247,9 @@ p {
   width: 225px;
   height: 225px;
 }
-.team-title, .team-stats, .team-player-card {
+.team-title,
+.team-stats,
+.team-player-card {
   border: 3px solid darkgray;
   width: 280px;
   height: 300px;
@@ -243,13 +257,13 @@ p {
   margin: auto;
   margin-bottom: 2em;
   border-radius: 15px;
-  gap:5px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: whitesmoke;
-  box-shadow: 0 5px 5px 5px rgba(0,0,0,.5);
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.5);
   animation: fadeIn 5s;
   -webkit-animation: fadeIn 5s;
   -moz-animation: fadeIn 5s;
@@ -257,28 +271,31 @@ p {
   -ms-animation: fadeIn 5s;
 }
 
-.team-title:hover, .team-stats:hover, .team-player-card:hover, .player-card:hover {
+.team-title:hover,
+.team-stats:hover,
+.team-player-card:hover,
+.player-card:hover {
   transform: scale(1.1);
   transition: 0.5s all ease;
-  box-shadow: 0 5px 5px 5px rgba(0,0,0,.5);
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link-player {
   text-decoration: none;
-  margin:10px 0px 10px;
-  padding:0;
+  margin: 10px 0px 10px;
+  padding: 0;
   font-weight: 400;
 }
 .team-player-card {
   border: 0px;
   justify-content: space-around;
   padding: 0px;
-
 }
-.team-player-name, .team-player-number {
+.team-player-name,
+.team-player-number {
   color: black;
   opacity: 1;
- text-align:center;
+  text-align: center;
 }
 
 .team-player-number {
@@ -290,10 +307,10 @@ PLAYER
 VIEW
  */
 .player-container {
-  font-family: 'Unbounded', sans-serif;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  font-family: "Unbounded", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 125px;
   margin-top: 80px;
   gap: 1em;
@@ -307,13 +324,13 @@ VIEW
   margin: auto;
   margin-bottom: 2em;
   border-radius: 15px;
-  gap:5px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: whitesmoke;
-  box-shadow: 0 5px 5px 5px rgba(0,0,0,.5);
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.5);
   animation: fadeIn 5s;
   -webkit-animation: fadeIn 5s;
   -moz-animation: fadeIn 5s;
@@ -322,142 +339,141 @@ VIEW
 }
 
 p {
-  text-align:left;
-
+  text-align: left;
 }
 /* 
 Footer
 menu 
 */
 .site-footer {
-    left: 0px;
-    bottom: 0px;
-    height: 100px;
-    width: 100%;
-    background-image: linear-gradient(#17408B, #C9082A);
-    display:flex;
-    position:fixed;
-    justify-content: space-around;
-    box-shadow: 0 5px 5px 10px rgba(0,0,0,.5);
-  }
-  .site-footer-links {
-    margin-top: 0.5em;
-    display:flex;
-    flex-direction: column;
-  }
-  .footer-link {
-    cursor: pointer;
-    color:white;
-  }
+  left: 0px;
+  bottom: 0px;
+  height: 100px;
+  width: 100%;
+  background-image: linear-gradient(#17408b, #c9082a);
+  display: flex;
+  position: fixed;
+  justify-content: space-around;
+  box-shadow: 0 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.site-footer-links {
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+.footer-link {
+  cursor: pointer;
+  color: white;
+}
 
-  .site-footer-disclaimer {
-    display: none;
-  }
+.site-footer-disclaimer {
+  display: none;
+}
 
-  .nba-logo img {
-    margin-top: 0.5em;
-    height: 75px;
-    width: 65px;
-  }
+.nba-logo img {
+  margin-top: 0.5em;
+  height: 75px;
+  width: 65px;
+}
 
-  @media only screen and (min-width: 760px) {
-  
+@media only screen and (min-width: 760px) {
   /*
   global
   */
   .return-button {
-    width:150px;
+    width: 150px;
     height: 50px;
     font-size: 20px;
   }
-    /* 
+  /* 
   divisions
   view [ home page ]
   styling 
   */
-    .divisions-title {
-      display:block;
-      width: 100%;
-      height: 50px;
-      border-radius:0px; 
-    }
+  .divisions-title {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 0px;
+  }
 
-    .divisions-team-list {
-      display: flex;
-      flex-direction: row;
-      gap:10px;
-    }
+  .divisions-team-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
 
-    .team-list-card {
-      width: 125px;
-      height: 155px;
-    }
+  .team-list-card {
+    width: 125px;
+    height: 155px;
+  }
 
-    .team-list-card img {
-      width: 120px;
-      height: 135px;
-    }
-    /*
+  .team-list-card img {
+    width: 120px;
+    height: 135px;
+  }
+  /*
 INDIVIDUAL
 TEAM
 VIEW
 */
 
-.team-title, .team-stats {
-  width: 500px;
-  height: 500px;
-}
+  .team-title,
+  .team-stats {
+    width: 500px;
+    height: 500px;
+  }
 
-.team-title img {
-  width: 400px;
-  height: 400px;
-}
+  .team-title img {
+    width: 400px;
+    height: 400px;
+  }
 
-.category-title {
-  font-size: 80px;
-}
+  .category-title {
+    font-size: 80px;
+  }
 
-.team-stats p {
-  font-size: 30px;
-  text-align:left;
-}
+  .team-stats p {
+    font-size: 30px;
+    text-align: left;
+  }
 
-.team-players {
-  display:flex;
-  flex-direction:row;
-  flex-wrap: wrap;
-}
-/*
+  .team-players {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  /*
 INDIVIDUAL
 PLAYER
 VIEW
  */
- .player-card {
-  margin-top:65px;
-  width: 400px;
- }
- .team-player-name {
-  font-size:35px;
- }
- .team-player-number {
-  font-size: 150px;
- }
+  .player-card {
+    margin-top: 65px;
+    width: 400px;
+  }
+  .team-player-name {
+    font-size: 35px;
+  }
+  .team-player-number {
+    font-size: 150px;
+  }
 }
 
-  @media only screen and (min-width: 912px) {
-   /* 
+@media only screen and (min-width: 912px) {
+  /* 
   divisions
   view [ home page ]
   styling 
   */
   .divisions-team-list {
-    gap:15px;
+    gap: 15px;
   }
 
   .team-list-card {
     width: 150px;
     height: 175px;
-    margin-bottom:1em;
+    margin-bottom: 1em;
   }
 
   .team-list-card img {
@@ -470,27 +486,27 @@ INDIVIDUAL
 TEAM
 VIEW
 */
-.team-title, .team-stats {
-  width: 700px;
-  height: 700px;
-}
+  .team-title,
+  .team-stats {
+    width: 700px;
+    height: 700px;
+  }
 
-.team-title img {
-  width: 500px;
-  height: 500px;
-}
+  .team-title img {
+    width: 500px;
+    height: 500px;
+  }
 
-.team-stats p {
-  font-size: 40px;
-  text-align:left;
-}
+  .team-stats p {
+    font-size: 40px;
+    text-align: left;
+  }
 
-.team-player-card {
-  width: 230px;
-  height:250px;
-  padding: 0px;
-}
-
+  .team-player-card {
+    width: 230px;
+    height: 250px;
+    padding: 0px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -501,7 +517,7 @@ VIEW
   */
 
   .divisions-team-list {
-    gap:20px;
+    gap: 20px;
   }
 
   .team-list-card {
@@ -513,17 +529,17 @@ INDIVIDUAL
 TEAM
 VIEW
 */
- .team-player-card {
-  padding: 15px;
- }
+  .team-player-card {
+    padding: 15px;
+  }
   /*
   footer
   */
   .site-footer-disclaimer {
-    color:whitesmoke;
-    display:inline-flex;
+    color: whitesmoke;
+    display: inline-flex;
     width: 650px;
-    margin-top:1em;
+    margin-top: 1em;
   }
 }
 
@@ -536,7 +552,7 @@ VIEW
 
   .divisions-team-list {
     justify-content: space-around;
-    width:100%;
+    width: 100%;
   }
 
   .team-list-card {
