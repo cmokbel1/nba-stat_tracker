@@ -42,6 +42,9 @@ export const PlayerView = () => {
     if (!player.length) {
         return <p>loading...</p>
     }
+    if (playerError) {
+        return <h1>Something is not right...</h1>
+    }
     return (
         <div className="player-container">
             <div className="player-card">
